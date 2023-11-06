@@ -46,9 +46,6 @@ require("./app/routes/thou.routes.js")(app);
 require("./app/routes/content.routes.js")(app);
 
 // Get the port number from the environment variable or use port 3000 as a default
-const PORT = process.env.PORT || 4000;
-
-// listen for requests
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+app.listen(process.env.PORT||3000, () => {
+  console.log(`Server is listening on port 3000`);
 });
