@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/mat.routes.js")(app);
 require("./app/routes/smat.routes.js")(app);
-
+require("./app/routes/Thou.routes.js")(app);
 
 
 // Get the port number from the environment variable or use port 3000 as a default
