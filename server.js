@@ -32,7 +32,7 @@ mongoose.connect("mongodb+srv://malekghrandii:gryRkDvagNbuWXS6@cluster0.zstqfyj.
 
 // define a simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Rest API By Chaaben Group." });
+  res.json({ message: "Welcome to Rest API By Malek Ghrandi." });
 });
 
 
