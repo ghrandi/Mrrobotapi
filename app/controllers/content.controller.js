@@ -112,7 +112,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   Content.findByIdAndRemove(req.params.contentId)
     .then((content) => {
-      if (!admin) {
+      if (!content) {
         return res.status(404).send({
           message: "admin not found with id " + req.params.contentId,
         });
