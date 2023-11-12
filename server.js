@@ -5,10 +5,15 @@ const bodyParser = require("body-parser");
 // create express app
 const app = express();
 
-// Set up CORS for a specific origin
-const allowedOrigin = "https://fsegs.netlify.app";
+// Set up CORS with a dynamic origin check
 const corsOptions = {
-  origin: allowedOrigin,
+  origin: function (origin, callback) {
+    if (origin === "https://fsegs.netlify.app") {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
