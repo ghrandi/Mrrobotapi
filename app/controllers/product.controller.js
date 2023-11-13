@@ -1,25 +1,25 @@
-const Product = require("../models/product.model.js");
+const Contact = require("../models/contact.model.js");
 
-// Create and Save a new product
+// Create and Save a new conatct
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.name) {
+  if (!req.body.username) {
     return res.status(400).send({
-      message: "product content can not be empty",
+      message: "username content can not be empty",
     });
   }
 
   // Create a product
-  const product = new Product({
-    name: req.body.name || "Untitled Product",
-    quantity: req.body.quantity,
-    description: req.body.description,
-    price: req.body.price,
-    category: req.body.category,
+  const contact = new Contact({
+    username: req.body.username,
+    email: req.body.email,
+    object: req.body.object,
+    message : req.body.message ,
+  
   });
 
   // Save product in the database
-  product
+  contact
     .save()
     .then((data) => {
       res.send(data);
@@ -34,37 +34,37 @@ exports.create = (req, res) => {
 
 // Retrieve and return all product from the database.
 exports.findAll = (req, res) => {
-  Product.find()
-    .then((products) => {
-      res.send(products);
+  Contact.find()
+    .then((contact) => {
+      res.send(contact);
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving products.",
+          err.message || "Some error occurred while retrieving conatcts.",
       });
     });
 };
 
 // Find a single product with a productId
 exports.findOne = (req, res) => {
-  Product.findById(req.params.productId)
-    .then((product) => {
-      if (!product) {
+  Contact.findById(req.params.contactId)
+    .then((contact) => {
+      if (!contact) {
         return res.status(404).send({
-          message: "product not found with id " + req.params.productId,
+          message: "contact not found with id " + req.params.contactId,
         });
       }
-      res.send(product);
+      res.send(contact);
     })
     .catch((err) => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "product not found with id " + req.params.productId,
+          message: "contact not found with id " + req.params.contactId,
         });
       }
       return res.status(500).send({
-        message: "Error retrieving product with id " + req.params.productId,
+        message: "Error retrieving contact with id " + req.params.contactId,
       });
     });
 };
@@ -72,63 +72,62 @@ exports.findOne = (req, res) => {
 // Update a product identified by the productId in the request
 exports.update = (req, res) => {
   // Validate Request
-  if (!req.body.name) {
+  if (!req.body.username) {
     return res.status(400).send({
-      message: "product content can not be empty",
+      message: "contact content can not be empty",
     });
   }
 
   // Find product and update it with the request body
-  Product.findByIdAndUpdate(
-    req.params.productId,
+  Contact.findByIdAndUpdate(
+    req.params.conatctId,
     {
-      name: req.body.name || "Untitled Product",
-      quantity: req.body.quantity,
-      description: req.body.description,
-      price: req.body.price,
-      category: req.body.category,
+      username: req.body.username || "Untitled conatct",
+       email: req.body.email,
+    object: req.body.object,
+    message : req.body.message ,
     },
     { new: true }
   )
-    .then((product) => {
-      if (!product) {
+    .then((conatct) => {
+      if (!conatct) {
         return res.status(404).send({
-          message: "product not found with id " + req.params.productId,
+          message: "conatct not found with id " + req.params.conatctId,
         });
       }
-      res.send(product);
+      res.send(conatct);
     })
     .catch((err) => {
       if (err.kind === "ObjectId") {
         return res.status(404).send({
-          message: "product not found with id " + req.params.productId,
+          message: "conatct not found with id " + req.params.conatctId,
         });
       }
       return res.status(500).send({
-        message: "Error updating product with id " + req.params.productId,
+        message: "Error updating conatct with id " + req.params.conatctId,
       });
     });
 };
 
 // Delete a product with the specified productId in the request
 exports.delete = (req, res) => {
-  Product.findByIdAndRemove(req.params.productId)
-    .then((product) => {
-      if (!product) {
+  Conatct.findByIdAndRemove(req.params.conatctId)
+    .then((conatct) => {
+      if (!conatct) {
         return res.status(404).send({
-          message: "product not found with id " + req.params.productId,
+          message: "conatct not found with id " + req.params.conatctId,
         });
       }
-      res.send({ message: "product deleted successfully!" });
+      res.send({ message: "conatct deleted successfully!" });
     })
     .catch((err) => {
-      if (err.kind === "ObjectId" || err.name === "NotFound") {
+      if (err.kind === "ObjectId" || err.username === "NotFound") {
         return res.status(404).send({
-          message: "product not found with id " + req.params.productId,
+          message: "conatct not found with id " + req.params.conatctId,
         });
       }
       return res.status(500).send({
-        message: "Could not delete product with id " + req.params.productId,
+        message: "Could not delete conatct with id " + req.params.conatctId,
       });
     });
 };
