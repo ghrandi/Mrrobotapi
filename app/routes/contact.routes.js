@@ -5,9 +5,9 @@ module.exports = (app) => {
 
   app.get("/contacts", contacts.findAll);
 
-  app.get("/contacts/:conatctId", contacts.findOne);
+  app.get("/contacts/:contactId", contacts.findOne);
 
-  app.put("/contacts/:conatctId", contacts.update);
+  app.put("/contacts/:contactId", contacts.update);
 
-  app.delete("/contacts/:conatctId", contacts.delete);
+  app.delete("/contacts/:contactId", contacts.delete);
 };
