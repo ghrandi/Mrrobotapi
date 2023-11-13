@@ -1,13 +1,13 @@
 module.exports = (app) => {
-  const products = require("../controllers/product.controller.js");
+  const conatcts = require("../controllers/conatct.controller.js");
 
-  app.post("/products", products.create);
+  app.post("/conatcts", conatcts.create);
 
-  app.get("/products", products.findAll);
+  app.get("/conatcts", conatcts.findAll);
 
-  app.get("/products/:productId", products.findOne);
+  app.get("/conatcts/:conatctId", conatcts.findOne);
 
-  app.put("/products/:productId", products.update);
+  app.put("/conatcts/:conatctId", conatcts.update);
 
-  app.delete("/products/:productId", products.delete);
+  app.delete("/conatcts/:conatctId", conatcts.delete);
 };
