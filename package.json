@@ -13,7 +13,7 @@
     "Mongoose",
     "Notes"
   ],
-  "author": "ChaabenGroup",
+  "author": "Mr_ROBOT",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
