@@ -13,6 +13,7 @@ exports.create = (req, res) => {
   const mat = new Mat({
     nom: req.body.nom || "Untitled Admin",
     content: req.body.content,
+    photo: req.body.photo,
   
   });
 
@@ -80,6 +81,7 @@ exports.update = (req, res) => {
     {
       nom: req.body.nom || "Untitled admin",
     content: req.body.content,
+        photo: req.body.photo,
      
     },
     { new: true }
