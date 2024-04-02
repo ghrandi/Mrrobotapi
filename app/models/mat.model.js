@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const MatSchema = mongoose.Schema(
    {
     content: String,
-    
+    photo: String,
    
     nom: String,
       
